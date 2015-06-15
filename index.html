@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>jquery.devicemock.js</title>
+   <meta name="description" content="This can be given Device Frames for any of the elements." />
+   <meta name="keywords"    content="html5 , audio , jquery , plugin" />
+   <meta property="og:title"       content="jquery.devicemock.js">
+   <meta property="og:description" content="This can be given Device Frames for any of the elements.">
+   <meta property="og:type"      content="website">
+   <meta property="og:site_name" content="jquery.devicemock.js">
+   <meta property="fb:app_id"    content="378485365683261">
+
+   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+   <link rel="stylesheet" type="text/css" href="./demo/css/demo.css">
+
+   <link rel="stylesheet" type="text/css" href="./jquery.devicemock/css/jquery.devicemock.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+
+   <link href='https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css' rel='stylesheet' type='text/css'>
+   <link href='https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeRDark.min.css' rel='stylesheet' type='text/css'>
+
+   <script src="./jquery.devicemock/jquery.devicemock.1.0.0.js"></script>
+   <script type="text/javascript">
+      $(function(){
+
+         //devicemock demos init
+         //---------------
+         $('[data-dm-type]').each(function(i){
+            var that = this;
+            var opt  = {};
+            var keys = [
+                        'type',
+                        'size',
+                        'theme',
+                        'orientation',
+                        'address'
+                     ];
+            for ( i in keys ) {
+               var data = $(that).data('dm-'+keys[i]);
+               if(data !== '' && data !== void 0){
+                  opt[keys[i]] = data;
+               }
+            }
+            $(that).deviceMock(opt);
+         });
+      });
+
+   </script>
+   <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+     ga('create', 'UA-63335117-1', 'auto');
+     ga('send', 'pageview');
+   </script>
+</head>
+<body id="devicemock"  class="js-nav-close-end">
+
+   <div class="viewport">
+
+      <section class="main-section">
+
+         <h1 class="main-section__title">DeviceMock.js</h1>
+         <div class="wrapper">
+            <p class="main-section__text">
+               This can be given Device Frames for any of the elements (div, img , iframe).
+            </p>
+            <p class="main-section__text">
+               with jQuery - v1.5.0 or Later.
+            </p>
+         </div>
+
+         <a class="main-section__btn" href="https://github.com/rm-labo/devicemock" target="_blank">
+            <span>
+               <i class="fa fa-github fa-lg"></i>
+               <small>Download on</small>
+               GitHub
+            </span>
+         </a>
+
+         <div class="main-section__main-visual">
+            <div class="main-section__main-visual__item" style="z-index:53; bottom:180px; left:280px;">
+               <div style="width:200px;"
+                  data-dm-type        ="browser"
+                  data-dm-size        ="1x"
+                  data-dm-theme       =""
+                  data-dm-orientation =""
+                  data-dm-address     ="http://example123.com"
+                  >
+                  <div class="main-section__main-visual__item__screen" style="height:150px;"></div>
+               </div>
+            </div>
+            <div class="main-section__main-visual__item" style="z-index:52; bottom:230px; left:390px;">
+               <div style="width:300px; height:150px;"
+                  data-dm-type        ="browser"
+                  data-dm-size        ="1x"
+                  data-dm-theme       =""
+                  data-dm-orientation =""
+                  data-dm-address     ="http://example123.com"
+                  >
+                  <div class="main-section__main-visual__item__screen" style="height:150px;"></div>
+               </div>
+            </div>
+            <div class="main-section__main-visual__item" style="z-index:64; bottom:0px; left:0px;">
+               <div
+                  data-dm-type        ="phone"
+                  data-dm-size        ="1x"
+                  data-dm-theme       =""
+                  data-dm-orientation ="portrait"
+                  data-dm-address     =""
+                  >
+                  <div class="main-section__main-visual__item__screen"></div>
+               </div>
+            </div>
+            <div class="main-section__main-visual__item" style="z-index:64; bottom:0px; left:90px;">
+               <div
+                  data-dm-type        ="phone"
+                  data-dm-size        ="1x"
+                  data-dm-theme       ="white"
+                  data-dm-orientation ="landscape"
+                  data-dm-address     =""
+                  >
+                  <div class="main-section__main-visual__item__screen"></div>
+               </div>
+            </div>
+            <div class="main-section__main-visual__item" style="z-index:63; bottom:20px; left:60px;">
+               <div
+                  data-dm-type        ="tablet"
+                  data-dm-size        ="1x"
+                  data-dm-theme       ="white"
+                  data-dm-orientation ="portrait"
+                  data-dm-address     =""
+                  >
+                  <div class="main-section__main-visual__item__screen"></div>
+               </div>
+            </div>
+            <div class="main-section__main-visual__item" style="z-index:63; bottom:20px; left:170px;">
+               <div
+                  data-dm-type        ="tablet"
+                  data-dm-size        ="1x"
+                  data-dm-theme       ="black"
+                  data-dm-orientation ="landscape"
+                  data-dm-address     =""
+                  >
+                  <div class="main-section__main-visual__item__screen"></div>
+               </div>
+            </div>
+            <div class="main-section__main-visual__item" style="z-index:52; bottom:20px; left:600px;">
+               <div
+                  data-dm-type        ="laptop"
+                  data-dm-size        ="2x"
+                  data-dm-theme       =""
+                  data-dm-orientation =""
+                  data-dm-address     =""
+                  >
+                  <div class="main-section__main-visual__item__screen"></div>
+               </div>
+            </div>
+
+            <div class="main-section__main-visual__item" style="z-index:51; bottom:30px; left:240px;">
+               <div
+                  data-dm-type        ="desktop"
+                  data-dm-size        ="4x"
+                  data-dm-theme       =""
+                  data-dm-orientation =""
+                  data-dm-address     =""
+                  >
+                  <div class="main-section__main-visual__item__screen"></div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="section section--generator">
+         <h1 class="section__title">Examples</h1>
+
+         <p class="section__text">
+            You can output the sample code in the following.
+         </p>
+
+         <div class="generator">
+
+            <form id="generator__form">
+               <table class="generator__form__table">
+                  <tr>
+                     <th>type :</th>
+                     <th>size :</th>
+                     <th>theme :</th>
+                     <th>orientation :</th>
+                     <th>address :</th>
+                  </tr>
+                  <tr>
+                     <td>
+                        <select class="generator__form__item js-ge-type" name="type">
+                        </select>
+                     </td>
+                     <td>
+                        <select class="generator__form__item js-ge-size" name="size">
+                        </select>
+                     </td>
+                     <td>
+                        <select class="generator__form__item js-ge-theme" name="theme">
+                        </select>
+                     </td>
+                     <td>
+                        <select class="generator__form__item js-ge-orientation" name="orientation">
+                        </select>
+                     </td>
+                     <td>
+                        <input type="text" class="generator__form__item" name="address" value="https://example123.com" style="width:200px;">
+                     </td>
+                  </tr>
+               </table>
+            </form>
+
+            <textarea class="js-generator-code-target" rows="15" style="width:100%; max-width:780px;" readonly onclick="this.select()"></textarea>
+
+            <div id="generator__preview" class="generator__preview">
+               <div class="js-generator__preview__target">
+                  <img src="http://lorempixel.com/800/800/abstract" height="100%" style="min-width:600px;" alt=""/>
+               </div>
+            </div>
+         </div>
+
+      </section>
+
+      <section class="section">
+         <h1 class="section__title">Usage</h1>
+         <div class="wrapper">
+
+            <p class="section__text">Import libraries.</p>
+
+            <pre class="brush: xhtml" title="">
+               <link rel="stylesheet" type="text/css" href="path/to/assets/css/jquery.devicemock.css">
+               <script src="jquery.js"></script> <!--  v1.5.0〜 -->
+               <script src="path/to/assets/jquery.devicemock.js"></script>
+            </pre>
+
+            <p class="section__text">
+               Your basic markup and JavaScript should look like this.
+            </p>
+
+            <pre class="brush: xhtml" title="">
+               <div class="selector">
+                  <!-- some contents  (div , img , iframe ...) -->
+               </div>
+            </pre>
+
+            <pre class="brush: js" title="" autolinks="false">
+               $('.selector').deviceMock({
+                  type        : 'browser',   // browser , phone , tablet , desktop , laptop
+                  size        : '1x',        // null(1x) , 2x , 3x , 4x , 5x
+                  theme       : 'black' ,    // black , white (if phone or tablet)
+                  orientation : 'portrait' , // landscape , portrait (if phone or tablet)
+                  address     : 'http://example123.com' // show on URL BAR
+               });
+            </pre>
+
+            <p class="section__text">
+               You can custmize path of asset img dir and css prefix. The following is the default value.
+            </p>
+
+            <pre class="brush: js" title="">
+               $('.selector').deviceMock({
+                  //・・・・
+                  imgPath     : './jquery.devicemock/img/', // path of asset img dir
+                  cssPrefix   : 'df-'                       // css namespace
+               });
+            </pre>
+
+            <p class="section__text">
+               Multiple installation example with data attribute.
+            </p>
+
+            <pre class="brush: xhtml" title="">
+               <!-- browser -->
+               <div style="width:300px;"
+                  data-devicemock-type        ="browser"
+                  data-devicemock-size        ="2x"
+                  data-devicemock-theme       =""
+                  data-devicemock-orientation =""
+                  data-devicemock-address     ="http://example123.com"
+                  >
+                  <img src="path/to/img.jpg">
+               </div>
+
+               <!-- tablet -->
+               <div
+                  data-devicemock-type        ="tablet"
+                  data-devicemock-size        ="4x"
+                  data-devicemock-theme       ="black"
+                  data-devicemock-orientation ="landscape"
+                  data-devicemock-address     =""
+                  >
+                  <div>
+                     <!-- some inner contents (div , img , iframe ...) -->
+                  </div>
+               </div>
+            </pre>
+
+            <pre class="brush: js" title="">
+               $('[data-devicemock-type]').each(function(i){
+                  var that = this;
+                  var opt  = {};
+                  var object = [
+                              'type',
+                              'size',
+                              'theme',
+                              'orientation',
+                              'address'
+                           ];
+                  for (prop in object) {
+                     var data = $(that).data('dm-'+object[prop]);
+                     if (object.hasOwnProperty(prop)) {
+                        opt[object[prop]] = data;
+                     }
+                  }
+                  $(that).deviceMock(opt);
+               });
+            </pre>
+
+            <section class="sub-section">
+               <h1 class="sub-section__title">Available Options</h1>
+               <table class="table-basic">
+                  <thead>
+                     <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default value</th>
+                        <th>Description</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th>type</th>
+                        <td>string</td>
+                        <td>browser</td>
+                        <td class="left">
+                           Could be<br />
+                           <strong>browser</strong>,
+                           <strong>phone</strong>,
+                           <strong>tablet</strong>,
+                           <strong>desktop</strong>,
+                           or
+                           <strong>laptop</strong>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>size</th>
+                        <td>string</td>
+                        <td>3x</td>
+                        <td class="left">
+                           Could be<br />
+                           <strong>1x</strong>,
+                           <strong>2x</strong>,
+                           <strong>3x</strong>,
+                           〜
+                           <strong>9x</strong>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>theme</th>
+                        <td>string</td>
+                        <td>black</td>
+                        <td class="left">
+                           only when type is phone or tablet.<br />
+                           <br />
+                           Could be<br />
+                           <strong>black</strong>
+                           or
+                           <strong>white</strong>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>orientation</th>
+                        <td>string</td>
+                        <td>portrait</td>
+                        <td class="left">
+                           only when type is phone or tablet.<br />
+                           <br />
+                           Could be<br />
+                           <strong>black</strong>
+                           or
+                           <strong>white</strong>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>address</th>
+                        <td>string</td>
+                        <td><span class="text-sub">none</span></td>
+                        <td class="left">
+                           only when type is browser.<br />
+                           <br />
+                           example : 'http://example.com'<br />
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>imgPath</th>
+                        <td>string</td>
+                        <td>./jquery.devicemock/img/</td>
+                        <td class="left">
+                           path of asset img dir<br />
+                           <br />
+                           example : './assets/img/'<br />
+                        </td>
+                     </tr>
+                     <tr>
+                        <th>cssPrefix</th>
+                        <td>string</td>
+                        <td>df-</td>
+                        <td class="left">
+                           css namespace<br />
+                           <br />
+                           Please refer to the scss file if you want to change.<br />
+                           -> $prefix : '.df-'; <br />
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </section>
+         </div>
+      </section>
+
+      <section class="section">
+         <h1 class="section__title">Licence</h1>
+         <div class="wrapper">
+            <p class="section__text">
+               easyAudioEffects.js licensed under MIT license.<br />
+               You are free to use easyAudioEffects.js for your personal or commercial websites projects.
+            </p>
+            <p class="section__text">
+               The latest source code is available on <a href="https://github.com/rm-labo/devicemock" target="_blank">GitHub</a>.
+            </p>
+
+            <div style="padding-top:20px; text-align:center;">
+               <div style="display:inline-block;">
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+               </div>
+               <div style="display:inline-block;">
+                  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <footer id="footer">
+         <small>made by RM</small>
+      </footer>
+
+   </div>
+
+   <script src="./demo/js/demo.js"></script>
+
+   <div id="fb-root"></div>
+   <script>(function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3&appId=378485365683261";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));</script>
+
+</body>
+</html>

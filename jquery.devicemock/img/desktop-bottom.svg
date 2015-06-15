@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1699.489px" height="353.521px" viewBox="0 0 1699.489 353.521" enable-background="new 0 0 1699.489 353.521"
+	 xml:space="preserve">
+<g>
+</g>
+<g id="Device_1_">
+	<g id="Stand">
+		<g>
+			<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#f0f0f0" points="1068.479,329.375 1018.286,155.354 681.075,155.354
+				630.883,329.375 569.635,337.453 569.635,353.521 1129.728,353.521 1129.728,337.453 			"/>
+		</g>
+	</g>
+	<g id="Shadow" opacity="0.102">
+		<g>
+			<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#8e8e8e" points="1018.286,155.354 681.075,155.354 670.213,193.017
+				1029.149,193.017 			"/>
+		</g>
+	</g>
+	<g id="bottom_base">
+		<g>
+			<path fill-rule="evenodd" clip-rule="evenodd" fill="#f0f0f0" d="M0,0v117.693c0,20.8,16.862,37.661,37.662,37.661h1624.166
+				c20.8,0,37.662-16.861,37.662-37.661V0H0z"/>
+		</g>
+	</g>
+</g>
+</svg>

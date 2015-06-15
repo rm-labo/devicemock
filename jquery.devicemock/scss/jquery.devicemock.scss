@@ -1,0 +1,519 @@
+@charset "utf-8";
+
+$prefix : '.df-'; //namespace
+
+$color-void        : #999;
+$color-browser-bass: #e6e6e6;
+$color-browser-bar : #fff;
+$color-phone-bass-k: #444;
+$color-phone-bass-w: #f0f0f0;
+$color-desktop-bass: #444;
+$color-laptop-bass : #444;
+
+
+// clearfix ************************
+@mixin clearfix {
+   zoom: 1;
+   &:before,
+   &:after {
+      display: block;
+      height: 0;
+      visibility: hidden;
+      content: "\0020";
+   }
+   &:after {
+      clear: both;
+   }
+}
+
+// common
+//--------------------------------
+#{$prefix}frame{
+   display: inline-block;
+   vertical-align: top;
+   img,
+   svg{
+      vertical-align: bottom;
+   }
+
+   > #{$prefix}top {
+      overflow: hidden;
+      img{
+         display: block;
+      }
+   }
+   > #{$prefix}screen {}
+   > #{$prefix}bottom {
+      img{
+         display: block;
+      }
+   }
+}
+
+// browser
+//--------------------------------
+@mixin device-browser-setting ($size){
+   $r    : $size*0.15;
+   $size-ui-offset: $size*3;
+
+   min-width: $size*10;
+
+   -webkit-border-radius: $r;
+      -moz-border-radius: $r;
+       -ms-border-radius: $r;
+        -o-border-radius: $r;
+           border-radius: $r;
+
+   > #{$prefix}top{
+      height: $size;
+      background-color:$color-browser-bass;
+      position: relative;
+      -webkit-border-top-left-radius : $r;
+      -webkit-border-top-right-radius: $r;
+         -moz-border-radius-topleft  : $r;
+         -moz-border-radius-topright : $r;
+              border-top-left-radius : $r;
+              border-top-right-radius: $r;
+      -webkit-border-bottom-right-radius: 0px;
+      -webkit-border-bottom-left-radius : 0px;
+         -moz-border-radius-bottomright : 0px;
+         -moz-border-radius-bottomleft  : 0px;
+              border-bottom-right-radius: 0px;
+              border-bottom-left-radius : 0px;
+
+      > #{$prefix}top-bar{
+         line-height: $size*0.6;
+         font-size: $size*0.4;
+         color    : darken( $color-browser-bass , 20%);
+         overflow : hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+         text-align: left;
+         -webkit-text-overflow: ellipsis;
+              -o-text-overflow: ellipsis;
+         padding : 0 1em;
+         position : absolute;
+         top    : $size*0.2;
+         left   : $size-ui-offset - ($size*0.2);
+         right  : $size*0.2;
+         bottom : $size*0.2;
+         display: block;
+         background-color: $color-browser-bar;
+         height: $size*0.6;
+         -webkit-border-radius: $size*0.15;
+            -moz-border-radius: $size*0.15;
+             -ms-border-radius: $size*0.15;
+              -o-border-radius: $size*0.15;
+                 border-radius: $size*0.15;
+      }
+      img,
+      svg{
+         padding: $size*0.3 0 0 $size*0.3;
+         height: $size*0.4 ;
+         vertical-align: top;
+      }
+   }
+
+   > #{$prefix}screen{
+      background-color: lighten($color-browser-bar , 1%);
+      overflow: hidden;
+      -webkit-border-top-left-radius : 0px;
+      -webkit-border-top-right-radius: 0px;
+         -moz-border-radius-topleft  : 0px;
+         -moz-border-radius-topright : 0px;
+              border-top-left-radius : 0px;
+              border-top-right-radius: 0px;
+      -webkit-border-bottom-right-radius: $r;
+      -webkit-border-bottom-left-radius : $r;
+         -moz-border-radius-bottomright : $r;
+         -moz-border-radius-bottomleft  : $r;
+              border-bottom-right-radius: $r;
+              border-bottom-left-radius : $r;
+
+   }
+
+   > #{$prefix}bottom{
+      display: none;
+      img,
+      svg{ width: 100%;}
+   }
+}
+
+#{$prefix}type-browser{
+
+   $bass-size : 16px;
+   @include device-browser-setting ($bass-size);
+   &#{$prefix}size-2x { @include device-browser-setting ($bass-size*1.25); }
+   &#{$prefix}size-3x { @include device-browser-setting ($bass-size*1.5); }
+   &#{$prefix}size-4x { @include device-browser-setting ($bass-size*1.75); }
+   &#{$prefix}size-5x { @include device-browser-setting ($bass-size*2.25); }
+   &#{$prefix}size-6x { @include device-browser-setting ($bass-size*2.5); }
+   &#{$prefix}size-7x { @include device-browser-setting ($bass-size*2.75); }
+   &#{$prefix}size-8x { @include device-browser-setting ($bass-size*3.0); }
+   &#{$prefix}size-9x { @include device-browser-setting ($bass-size*3.25); }
+}
+
+
+// phone
+//--------------------------------
+@mixin device-phone-setting ( $size , $color ){
+   $r: $size*0.12;
+   $ratio : 1.770; //screen aspect
+
+   // portrait
+   //------------
+   &#{$prefix}orientation-portrait{
+      background-color : $color;
+      width: $size;
+      -webkit-border-radius: $r;
+         -moz-border-radius: $r;
+          -ms-border-radius: $r;
+           -o-border-radius: $r;
+              border-radius: $r;
+      > #{$prefix}top{
+         img,
+         svg { width: 100%;}
+      }
+      > #{$prefix}screen{
+         width  : $size*0.9;
+         height : $size*0.9*$ratio;
+      }
+      > #{$prefix}bottom{
+         img,
+         svg { width: 100%;}
+      }
+   }
+
+   // landscape
+   //------------
+   &#{$prefix}orientation-landscape{
+      @include clearfix;
+      height: $size;
+      //width: $size*$ratio;
+      background-color : $color;
+      -webkit-border-radius: $r;
+         -moz-border-radius: $r;
+          -ms-border-radius: $r;
+           -o-border-radius: $r;
+              border-radius: $r;
+      > #{$prefix}top{
+         height: $size;
+         float: left;
+         img,
+         svg { height: 100%;}
+      }
+      > #{$prefix}screen{
+         height: $size;
+         float: left;
+         width  : $size*0.9*$ratio;
+         height : $size*0.9;
+         margin-top: $size*0.1/2
+      }
+      > #{$prefix}bottom{
+         height: $size;
+         float: left;
+         img,
+         svg { height: 100%;}
+      }
+
+   }
+
+}
+
+#{$prefix}type-phone {
+
+   //common
+   overflow: hidden;
+   > #{$prefix}top{
+   }
+   > #{$prefix}screen{
+      margin: 0 auto;
+      background-color: $color-void;
+      overflow: hidden;
+   }
+   > #{$prefix}bottom{
+      position: relative;
+   }
+
+   //unique
+   $bass-size: 75px;
+   @include device-phone-setting( $bass-size , $color-phone-bass-k );
+   &#{$prefix}theme-black {
+      &#{$prefix}size-2x { @include device-phone-setting( $bass-size*2 , $color-phone-bass-k );}
+      &#{$prefix}size-3x { @include device-phone-setting( $bass-size*3 , $color-phone-bass-k );}
+      &#{$prefix}size-4x { @include device-phone-setting( $bass-size*4 , $color-phone-bass-k );}
+      &#{$prefix}size-5x { @include device-phone-setting( $bass-size*5 , $color-phone-bass-k );}
+      &#{$prefix}size-6x { @include device-phone-setting( $bass-size*6 , $color-phone-bass-k );}
+      &#{$prefix}size-7x { @include device-phone-setting( $bass-size*7 , $color-phone-bass-k );}
+      &#{$prefix}size-8x { @include device-phone-setting( $bass-size*8 , $color-phone-bass-k );}
+      &#{$prefix}size-9x { @include device-phone-setting( $bass-size*9 , $color-phone-bass-k );}
+   }
+   &#{$prefix}theme-white {
+      @include device-phone-setting( $bass-size , $color-phone-bass-w);
+      &#{$prefix}size-2x { @include device-phone-setting( $bass-size*2 , $color-phone-bass-w);}
+      &#{$prefix}size-3x { @include device-phone-setting( $bass-size*3 , $color-phone-bass-w);}
+      &#{$prefix}size-4x { @include device-phone-setting( $bass-size*4 , $color-phone-bass-w);}
+      &#{$prefix}size-5x { @include device-phone-setting( $bass-size*5 , $color-phone-bass-w);}
+      &#{$prefix}size-6x { @include device-phone-setting( $bass-size*6 , $color-phone-bass-w);}
+      &#{$prefix}size-7x { @include device-phone-setting( $bass-size*7 , $color-phone-bass-w);}
+      &#{$prefix}size-8x { @include device-phone-setting( $bass-size*8 , $color-phone-bass-w);}
+      &#{$prefix}size-9x { @include device-phone-setting( $bass-size*9 , $color-phone-bass-w);}
+   }
+}
+
+
+// tablet
+//--------------------------------
+@mixin device-tablet-setting( $size , $color ){
+   $r     : $size*0.05;
+   $ratio : 1.333; //screen aspect
+
+   // portrait
+   //------------
+   &#{$prefix}orientation-portrait{
+      background-color : $color;
+      width: $size;
+      -webkit-border-radius: $r;
+         -moz-border-radius: $r;
+          -ms-border-radius: $r;
+           -o-border-radius: $r;
+              border-radius: $r;
+      > #{$prefix}top{
+         img,
+         svg { width: 100%;}
+      }
+      > #{$prefix}screen{
+         width: $size*0.9;
+         height: $size*0.9*$ratio;
+      }
+      > #{$prefix}bottom{
+         img,
+         svg { width: 100%;}
+      }
+   }
+
+   // landscape
+   //------------
+   &#{$prefix}orientation-landscape{
+      @include clearfix;
+      height: $size;
+      //width: $size*$ratio;
+      background-color : $color;
+      -webkit-border-radius: $r;
+         -moz-border-radius: $r;
+          -ms-border-radius: $r;
+           -o-border-radius: $r;
+              border-radius: $r;
+      > #{$prefix}top{
+         height: $size;
+         float: left;
+         img,
+         svg { height: 100%;}
+      }
+      > #{$prefix}screen{
+         height: $size;
+         float: left;
+         width  : $size*0.9*$ratio;
+         height : $size*0.9;
+         margin-top: $size*0.1/2
+      }
+      > #{$prefix}bottom{
+         height: $size;
+         float: left;
+         img,
+         svg { height: 100%;}
+      }
+   }
+}
+
+#{$prefix}type-tablet{
+
+   //common
+   overflow: hidden;
+   > #{$prefix}top{
+   }
+
+   > #{$prefix}screen{
+      margin: 0 auto;
+      background-color: $color-void;
+      overflow: hidden;
+   }
+   > #{$prefix}bottom{
+      position: relative;
+   }
+
+   //unique
+   $bass-size: 150px;
+   @include device-tablet-setting( $bass-size , $color-phone-bass-k );
+
+   &#{$prefix}theme-black {
+      &#{$prefix}size-2x { @include device-tablet-setting( $bass-size*1.25, $color-phone-bass-k );}
+      &#{$prefix}size-3x { @include device-tablet-setting( $bass-size*1.5 , $color-phone-bass-k );}
+      &#{$prefix}size-4x { @include device-tablet-setting( $bass-size*1.75, $color-phone-bass-k );}
+      &#{$prefix}size-5x { @include device-tablet-setting( $bass-size*2.0 , $color-phone-bass-k );}
+      &#{$prefix}size-6x { @include device-tablet-setting( $bass-size*2.25, $color-phone-bass-k );}
+      &#{$prefix}size-7x { @include device-tablet-setting( $bass-size*2.5 , $color-phone-bass-k );}
+      &#{$prefix}size-8x { @include device-tablet-setting( $bass-size*2.75, $color-phone-bass-k );}
+      &#{$prefix}size-9x { @include device-tablet-setting( $bass-size*3.0 , $color-phone-bass-k );}
+   }
+   &#{$prefix}theme-white {
+      @include device-tablet-setting( $bass-size , $color-phone-bass-w);
+      &#{$prefix}size-2x { @include device-tablet-setting( $bass-size*1.25, $color-phone-bass-w);}
+      &#{$prefix}size-3x { @include device-tablet-setting( $bass-size*1.5 , $color-phone-bass-w);}
+      &#{$prefix}size-4x { @include device-tablet-setting( $bass-size*1.75, $color-phone-bass-w);}
+      &#{$prefix}size-5x { @include device-tablet-setting( $bass-size*2.0 , $color-phone-bass-w);}
+      &#{$prefix}size-6x { @include device-tablet-setting( $bass-size*2.25, $color-phone-bass-w);}
+      &#{$prefix}size-7x { @include device-tablet-setting( $bass-size*2.5 , $color-phone-bass-w);}
+      &#{$prefix}size-8x { @include device-tablet-setting( $bass-size*2.75, $color-phone-bass-w);}
+      &#{$prefix}size-9x { @include device-tablet-setting( $bass-size*3.0 , $color-phone-bass-w);}
+   }
+}
+
+
+
+// desktop
+//--------------------------------
+@mixin device-desktop-setting ( $size , $color ){
+   $r: $size*0.02;
+   $ratio : 9/16; //screen aspect
+
+   // portrait
+   //------------
+   width: $size;
+   -webkit-border-radius: $r;
+      -moz-border-radius: $r;
+       -ms-border-radius: $r;
+        -o-border-radius: $r;
+           border-radius: $r;
+   > #{$prefix}top{
+      background-color : $color;
+      img,
+      svg { width: 100%;}
+   }
+   > #{$prefix}screen{
+      background-color : $color;
+      border-left: $size*0.04 solid $color;
+      border-right: $size*0.04 solid $color;
+      border-bottom: $size*0.04 solid $color;
+      width  : $size*0.92;
+      height : $size*0.92*$ratio;
+      overflow: hidden;
+      > #{$prefix}content{
+         min-height: 100%;
+         overflow: hidden;
+         background-color : darken($color , 10%);
+      }
+   }
+   > #{$prefix}bottom{
+      img,
+      svg { width: 100%;}
+   }
+}
+
+#{$prefix}type-desktop {
+
+   //common
+   overflow: hidden;
+   > #{$prefix}top{
+   }
+   > #{$prefix}screen{
+      background-color: $color-void;
+      overflow: hidden;
+   }
+   > #{$prefix}bottom{
+      position: relative;
+   }
+
+   //unique
+   $bass-size: 200px;
+   @include device-desktop-setting( $bass-size , $color-desktop-bass );
+   &#{$prefix}size-2x { @include device-desktop-setting( $bass-size*1.5 , $color-desktop-bass );}
+   &#{$prefix}size-3x { @include device-desktop-setting( $bass-size*2.0 , $color-desktop-bass );}
+   &#{$prefix}size-4x { @include device-desktop-setting( $bass-size*2.5 , $color-desktop-bass );}
+   &#{$prefix}size-5x { @include device-desktop-setting( $bass-size*3.0 , $color-desktop-bass );}
+   &#{$prefix}size-6x { @include device-desktop-setting( $bass-size*3.5 , $color-desktop-bass );}
+   &#{$prefix}size-7x { @include device-desktop-setting( $bass-size*4.0 , $color-desktop-bass );}
+   &#{$prefix}size-8x { @include device-desktop-setting( $bass-size*4.5 , $color-desktop-bass );}
+   &#{$prefix}size-9x { @include device-desktop-setting( $bass-size*5.0 , $color-desktop-bass );}
+
+}
+
+// laptop
+//--------------------------------
+@mixin device-laptop-setting ( $size , $color ){
+   $r: $size*0.02;
+   $depth : 0.8;
+   $ratio : 10/16; //screen aspect
+
+   // portrait
+   //------------
+   width: $size;
+   > #{$prefix}top{
+      -webkit-border-top-left-radius : $r;
+      -webkit-border-top-right-radius: $r;
+         -moz-border-radius-topleft  : $r;
+         -moz-border-radius-topright : $r;
+              border-top-left-radius : $r;
+              border-top-right-radius: $r;
+      -webkit-border-bottom-right-radius: 0;
+      -webkit-border-bottom-left-radius : 0;
+         -moz-border-radius-bottomright : 0;
+         -moz-border-radius-bottomleft  : 0;
+              border-bottom-right-radius: 0;
+              border-bottom-left-radius : 0;
+      width: $size*$depth;
+      margin: 0 auto;
+      padding: 0 $size*0.025;
+      background-color : $color;
+      img,
+      svg { width: 100%;}
+   }
+   > #{$prefix}screen{
+      width: $size*$depth;
+      height : $size*$depth*$ratio;
+      //padding: 0 $size*0.025 $size*0.025 $size*0.025;
+      border-left: $size*0.025 solid $color;
+      border-right: $size*0.025 solid $color;
+      border-bottom: $size*0.025 solid $color;
+      margin: 0 auto;
+      overflow: hidden;
+      background-color : $color;
+      > #{$prefix}content{
+         min-height: 100%;
+         overflow: hidden;
+         background-color : darken($color , 10%);
+      }
+   }
+   > #{$prefix}bottom{
+      img,
+      svg { width: 100%;}
+   }
+}
+
+#{$prefix}type-laptop {
+
+   //common
+   overflow: hidden;
+   > #{$prefix}top{
+   }
+   > #{$prefix}screen{
+      background-color: $color-void;
+      overflow: hidden;
+   }
+   > #{$prefix}bottom{
+      position: relative;
+   }
+
+   //unique
+   $bass-size: 200px;
+   @include device-laptop-setting( $bass-size , $color-laptop-bass );
+   &#{$prefix}size-2x { @include device-laptop-setting( $bass-size*1.6 , $color-laptop-bass );}
+   &#{$prefix}size-3x { @include device-laptop-setting( $bass-size*2.0 , $color-laptop-bass );}
+   &#{$prefix}size-4x { @include device-laptop-setting( $bass-size*2.6 , $color-laptop-bass );}
+   &#{$prefix}size-5x { @include device-laptop-setting( $bass-size*3.0 , $color-laptop-bass );}
+   &#{$prefix}size-6x { @include device-laptop-setting( $bass-size*3.6 , $color-laptop-bass );}
+   &#{$prefix}size-7x { @include device-laptop-setting( $bass-size*4.0 , $color-laptop-bass );}
+   &#{$prefix}size-8x { @include device-laptop-setting( $bass-size*4.6 , $color-laptop-bass );}
+   &#{$prefix}size-9x { @include device-laptop-setting( $bass-size*5.0 , $color-laptop-bass );}
+
+}
