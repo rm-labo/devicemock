@@ -128,9 +128,9 @@ Multiple installation example with data attribute.
            only when type is phone or tablet.<br>
            <br>
            Could be<br>
-           <strong>black</strong>
+           <strong>landscape</strong>
            or
-           <strong>white</strong>
+           <strong>portrait</strong>
         </td>
      </tr>
      <tr>
