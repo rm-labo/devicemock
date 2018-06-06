@@ -1,7 +1,7 @@
 # jquery.devicemock.js
 
 ## Demo
-Demo is <a href="http://rm-labo.com/labo/devicemock/" target="_blank">here</a>.
+Demo is <a href="http://rm-labo.github.io/devicemock/" target="_blank">here</a>.
 
 ## Usage
 Import libraries.
